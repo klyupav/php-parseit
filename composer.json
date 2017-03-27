@@ -1,0 +1,20 @@
+{
+    "name": "klyupav/php-parseit",
+    "type": "project",
+    "description": "Web parser",
+    "keywords": ["html","parse","parser"],
+    "homepage": "http://github.com/klyupav/php-parseit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "klyupav",
+            "email": "pasha.klyuchnikov@gmail.com",
+            "homepage": "http://github.com/klyupav",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "klyupav/parseit": "dev-master"
+    }
+}
