@@ -15,6 +15,7 @@
     ],
     "require": {
         "php": ">=7.0",
-        "klyupav/parseit": "dev-master"
+        "klyupav/parseit": "dev-master",
+        "doctrine/dbal": "^2.5"
     }
 }
