@@ -1,31 +1,28 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: klyupav
- * Date: 19.03.17
- * Time: 13:28
- */
+require 'autoload.php';
+Use ParseIt\Watches2uCom;
 
+$config = new \Doctrine\DBAL\Configuration();
 
-require 'vendor/autoload.php';
+$connectionParams = array(
+    'dbname' => 'vladmir_globaldrive',
+    'user' => 'kotopec',
+    'password' => '30031990',
+    'host' => 'localhost',
+    'driver' => 'pdo_mysql',
+);
 
-//$pathToDonorsDir = './donors';
-//$files = scandir( $pathToDonorsDir );
-//foreach ( $files as $file )
-//{
-//    if( preg_match('%^(.*?)\.php$%is', $file, $match) )
-//    {
-//        $DonorClass = $match[1];
-//        if (!class_exists( $DonorClass ))
-//        {
-//            require_once $pathToDonorsDir. DIRECTORY_SEPARATOR . "{$DonorClass}.php";
-//        }
-//    }
-//}
-use ParseIt\Parser;
+$conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
 
-$parser = new Parser();
+$characters = $conn->query("SELECT * FROM characters");
 
-$data = $parser->parsingDonor('https://www.watches2u.com/ladies-skagen-watches.html', 'Watches2uCom');
-print_r($data);
+while ($row = $characters->fetch()) {
+    print_r($row);
+}
 die();
+$watches = new Watches2uCom();
+
+$sources = $watches->getSources('https://www.watches2u.com/ladies-skagen-watches.html');
+
+
+print_r($sources);
