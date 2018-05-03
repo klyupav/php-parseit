@@ -123,12 +123,13 @@ Class AtomstroyexportRu extends simpleParser {
             }
         }
         $text = '';
-        if ( preg_match('%<div[^>]*class="raNewsDate[^>]*>.*?</div>(.*?)</td>%uis', $content, $match) )
+        if ( preg_match('%<div[^>]*class="raNewsDate[^>]*>.*?</div>(.*?)</td>[^<]+<\!\-\- \/right \-\->%uis', $content, $match) )
         {
             $text = trim($match[1]);
             $text = str_replace('<br>', "\r\n", $text);
             $text = preg_replace('%<\!\-\-.*?\-\->%uis', "", $text);
             $text = preg_replace('%<style>.*?</style>%uis', "", $text);
+            $text = preg_replace('%<div class="raBack">.*?</div>%uis', "", $text);
             $text = preg_replace('%<[^>]*>%uis', "", $text);
             $text = preg_replace('%[\r\n]+%uis', "\r\n", $text);
             $text = trim($text);

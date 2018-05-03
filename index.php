@@ -12,8 +12,9 @@ foreach ( $atom_s as $k => $source)
 {
     $N = $k+1;
 //    $news = $atom->getNewsDomMethod($source['href'], $source);
-//    $source['href'] = 'http://www.atomstroyexport.ru/journalists/press/3e4392004d20e8deb331bf8ad73eecf7';
+//    $source['href'] = 'http://www.atomstroyexport.ru/journalists/press/e4506780482cac299477ff329052ef2a';
     $news = $atom->getNewsRegexMethod($source['href'], $source);
+//    print_r($news);die();
     $src = $news['source'];
     $title = str_replace('"', '""', $news['title']);
     $date = str_replace('"', '""', $news['date']);
@@ -27,8 +28,8 @@ foreach ( $atom_s as $k => $source)
 //    print_r($csvstr);die();
 //    die();
 }
+//die();
 fclose($fp);
-
 //http://archive.niaep.ru/journalist/news/
 
 $niaep = new \ParseIt\Donor\NiaepRu();
