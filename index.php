@@ -20,8 +20,9 @@ foreach ( $atom_s as $k => $source)
     $text = str_replace('"', '""', $news['text']);
     $pic = str_replace('"', '""', $news['pic']);
     $pic_main = str_replace('"', '""', $news['pic_main']);
-    $csvstr = "{$N},\"{$src}\",\"{$title}\",\"{$date}\",\"{$text}\",\"{$pic}\",\"{$pic_main}\"\r\n";
-    fwrite($fp, $csvstr);
+    $csvstr = "{$N},\"{$src}\",\"{$title}\",\"{$date}\",\"{$text}\",\"{$pic}\",\"{$pic_main}\"";
+    $csvstr = preg_replace("%(\r\n|\n\r|\r|\n)%uis", '<br>', $csvstr);
+    fwrite($fp, $csvstr."\r\n");
 //    break;
 //    print_r($csvstr);die();
 //    die();
@@ -46,8 +47,9 @@ foreach ( $niaep_s as $k => $source)
     $text = str_replace('"', '""', $news['text']);
     $pic = str_replace('"', '""', $news['pic']);
     $pic_main = str_replace('"', '""', $news['pic_main']);
-    $csvstr = "{$N},\"{$src}\",\"{$title}\",\"{$date}\",\"{$text}\",\"{$pic}\",\"{$pic_main}\"\r\n";
-    fwrite($fp, $csvstr);
+    $csvstr = "{$N},\"{$src}\",\"{$title}\",\"{$date}\",\"{$text}\",\"{$pic}\",\"{$pic_main}\"";
+    $csvstr = preg_replace("%(\r\n|\n\r|\r|\n)%uis", '<br>', $csvstr);
+    fwrite($fp, $csvstr."\r\n");
 //    break;
 //    print_r($csvstr);die();
 //    die();
@@ -72,8 +74,9 @@ foreach ( $aep_s as $k => $source)
     $text = str_replace('"', '""', $news['text']);
     $pic = str_replace('"', '""', $news['pic']);
     $pic_main = str_replace('"', '""', $news['pic_main']);
-    $csvstr = "{$N},\"{$src}\",\"{$title}\",\"{$date}\",\"{$text}\",\"{$pic}\",\"{$pic_main}\"\r\n";
-    fwrite($fp, $csvstr);
+    $csvstr = "{$N},\"{$src}\",\"{$title}\",\"{$date}\",\"{$text}\",\"{$pic}\",\"{$pic_main}\"";
+    $csvstr = preg_replace("%(\r\n|\n\r|\r|\n)%uis", '<br>', $csvstr);
+    fwrite($fp, $csvstr."\r\n");
 //    break;
 //    print_r($csvstr);die();
 //    die();
