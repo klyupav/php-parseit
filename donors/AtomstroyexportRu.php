@@ -26,7 +26,8 @@ Class AtomstroyexportRu extends simpleParser {
     public function getSources($var = [])
     {
         $sources = [];
-        $content = $this->loadUrl('http://www.atomstroyexport.ru/journalists/press/', $var);
+        !isset($var['url']) ? $url = 'http://www.atomstroyexport.ru/journalists/press/' : $url = $var['url'];
+        $content = $this->loadUrl($url, $var);
         if ( !$content )
         {
             return $sources;
@@ -55,8 +56,8 @@ Class AtomstroyexportRu extends simpleParser {
                 $uri = explode('/', $item->href);
                 $hash = $uri[count($uri)-1];
                 $sources[] = [
-                    'source' => 'http://www.atomstroyexport.ru/journalists/press/',
-                    'href' => "http://www.atomstroyexport.ru/journalists/press/".$hash,
+                    'source' => $url,
+                    'href' => $url.$hash,
                     'title' => $item->title,
                     'date' => date('Y-m-d H:i:s', strtotime($item->date)),
                     'author' => $item->author,

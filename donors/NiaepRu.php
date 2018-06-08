@@ -26,7 +26,8 @@ Class NiaepRu extends simpleParser {
     public function getSources($var = [])
     {
         $sources = [];
-        $content = $this->loadUrl('http://archive.niaep.ru/journalist/news/', $var);
+        !isset($var['url']) ? $url = 'http://archive.niaep.ru/journalist/news/' : $url = $var['url'];
+        $content = $this->loadUrl($url, $var);
         if ( !$content )
         {
             return $sources;
@@ -35,7 +36,7 @@ Class NiaepRu extends simpleParser {
         {
             $uri = explode('/', $match[1]);
             $hash = $uri[count($uri)-1];
-            $content = $this->loadUrl('http://archive.niaep.ru/journalist/news/'.$hash, $var);
+            $content = $this->loadUrl($url.$hash, $var);
             if ( !$content )
             {
                 return $sources;
@@ -62,8 +63,8 @@ Class NiaepRu extends simpleParser {
                 $uri = explode('/', $item->href);
                 $hash = $uri[count($uri)-1];
                 $sources[] = [
-                    'source' => 'http://archive.niaep.ru/journalist/news/',
-                    'href' => "http://archive.niaep.ru/journalist/news/".$hash,
+                    'source' => $url,
+                    'href' => $url.$hash,
                     'title' => $item->title,
                     'date' => date('Y-m-d H:i:s', strtotime($item->date)),
                     'author' => $item->author,
